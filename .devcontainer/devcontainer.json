@@ -29,7 +29,13 @@
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
-			"settings": {},
+			"settings": {
+				"r.rpath.linux": "/usr/bin/R",
+				"r.rterm.option": [
+					"--no-site-file"
+				],
+				"r.rterm.linux": "/usr/local/bin/radian"
+			},
 			"extensions": [
 				"streetsidesoftware.code-spell-checker",
 				"REditorSupport.r",

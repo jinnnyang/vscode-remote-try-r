@@ -65,5 +65,8 @@ RUN pip install -U radian && \
     dpkg -i pandoc-3.6.4-1-amd64.deb && rm pandoc-3.6.4-1-amd64.deb
 
 # Recommend R add-ons
-# Dependencies: VS Code Plugin --> languageserver, rmarkdown
+# Dependencies: VS Code R Plugin --> languageserver, rmarkdown
 RUN R -e 'install.packages(c("languageserver", "rmarkdown", "httpgd"), repos = getOption("repos"))'
+
+# Dependencies: VS Code R Debugger Plugin --> vscDebugger
+RUN R -e 'install.packages("vscDebugger", repos = "https://manuelhentschel.r-universe.dev")'

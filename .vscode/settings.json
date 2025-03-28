@@ -1,0 +1,7 @@
+{
+    "r.rpath.linux": "/usr/bin/R",
+    "r.rterm.option": [
+        "--no-site-file"
+    ],
+    "r.rterm.linux": "/usr/local/bin/radian"
+}
