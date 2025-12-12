@@ -14,7 +14,6 @@ This file provides guidance to agents when working with code in this repository.
 - **R工具链**: radian作为R终端，languageserver提供LSP支持
 
 ## 项目结构特点
-- **空文件**: app.py和requirements.txt为空，项目主要使用R
 - **R Markdown支持**: example.Rmd展示基本用法
 - **依赖管理**: setup.R是唯一的依赖管理方式，无其他配置文件
 
