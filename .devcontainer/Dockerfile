@@ -27,7 +27,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # Temporary: Upgrade python packages due to https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-40897 and https://github.com/advisories/GHSA-2mqj-m65w-jghx
 # They are installed by the base image (python) which does not have the patch.
-RUN python3 -m pip install --upgrade \
+RUN --mount=type=cache,target=/root/.cache/pip \
+    python3 -m pip install --upgrade \
     setuptools==75.6.0 \
     gitpython==3.1.41
 
@@ -44,7 +45,9 @@ RUN python3 -m pip install --upgrade \
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
 # Install R
-RUN apt-get update -qq && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update -qq && \
     # 安装你需要的包
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
@@ -60,7 +63,8 @@ RUN apt-get update -qq && \
 RUN echo 'options("repos" = c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))' >> ~/.Rprofile
 
 # Dependencies: VS Code Plugin --> radian, rmarkdown --> pandoc
-RUN pip install -U radian && \
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -U radian && \
     wget https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-amd64.deb && \
     dpkg -i pandoc-3.6.4-1-amd64.deb && rm pandoc-3.6.4-1-amd64.deb
 
