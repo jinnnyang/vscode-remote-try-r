@@ -44,7 +44,7 @@
 			"extensions": [
 				"streetsidesoftware.code-spell-checker",
 				"REditorSupport.r",
-				"RDebugger.r-debugger",
+				"RDebugger.r-debugger"
 			]
 		}
 	},
